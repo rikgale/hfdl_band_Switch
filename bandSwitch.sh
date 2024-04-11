@@ -43,18 +43,6 @@ if [[ -z "${start_time_day}" || -z "${end_time_day}" || -z "${start_time_night}"
     exit 1
 fi
 
-# Function to delete old log entries
-delete_old_logs() {
-  # Log file path
-  log_file="/home/pi/bandSwitch.log"
-
-  # Calculate 5 days ago timestamp
-  five_days_ago=$(date -d "1 days ago" +%s)
-
-  # Find and delete log entries older than 5 days 
-  find "$log_file" -type f -mtime +1 -exec rm {} \;
-}
-
 # Log file
 log_file="/home/pi/bandSwitch.log"
 
@@ -62,9 +50,6 @@ log_file="/home/pi/bandSwitch.log"
 log_message() {
     echo "$(date +"%Y-%m-%d %H:%M:%S") $1" >> "$log_file"
 }
-
-# Delete old log entries
-delete_old_logs
 
 # Get the current time in HH:MM format
 current_time=$(date +"%H:%M")
