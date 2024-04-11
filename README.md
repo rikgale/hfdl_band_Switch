@@ -36,6 +36,8 @@ sudo crontab -e
 
 Set it to run at least a couple of times/hour incase the computer restarts for any reason, then it should notice and select the correct dumphfdl to run given the time of day.
 ```nano
-1-59/5 * * * * /home/pi/hfdl_band_Switch/bandSwitch.sh -startdaytime 08:30 -enddaytime 22:30 -startnighttime 22:31 -endnighttime 08:29 -serviceday dumphfdl5 -servicenight dumphfdl4 -bandday "Band 17" -bandnight "Band 5-6"
+1-59/5 * * * * /home/pi/hfdl_band_Switch/bandSwitch.sh -startdaytime 08:30 -enddaytime 22:30 -startnighttime 22:31 -endnighttime 08:29 -serviceday dumphfdl5 -servicenight dumphfdl4 -bandday "Band 17" -bandnight "Band 2-4"
+2-59/5 * * * * /home/pi/hfdl_band_Switch/bandSwitch.sh -startdaytime 09:30 -enddaytime 23:30 -startnighttime 23:31 -endnighttime 09:29 -serviceday dumphfdl3 -servicenight dumphfdl6 -bandday "Band 21" -bandnight "Band 5-6"
 ```
+The above `sudo crontab -e` entries switch between band 17 and 21 during the day to band 2-4 and 5-6 over night. 17 & 2-4 share the same SDR, 21 & 5-6 also share an SDR. The lower bands are more likely to be active overnight and bands 17 and 21 are very active during the day.
 
