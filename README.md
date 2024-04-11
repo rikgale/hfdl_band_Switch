@@ -23,7 +23,7 @@ example:
 ```bash
 /home/pi/hfdl_band_Switch/bandSwitch.sh -startdaytime 07:30 -enddaytime 22:30 -startnighttime 22:31 -endnighttime 07:29 -serviceday dumphfdl5 -servicenight dumphfdl4 -bandday "Band 17" -bandnight "Band 5-6"
 ```
-dumphfdl4 and dumphfdl5 are set up to use the same SDR, so only one can be used at any given time. The above example switches between them at different times of the day.
+dumphfdl4 and dumphfdl5 are set up to use the same SDR, so only one can be used at any given time. The above example switches between them at different times of the day. enddaytime should be no later than 23:58 (still working out the logic to get it to work properly).
 
 Running the script should place `bandSwitch.log` in your home drive.
 
