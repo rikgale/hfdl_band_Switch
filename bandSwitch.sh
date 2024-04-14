@@ -4,12 +4,12 @@
 print_usage() {
     echo "Usage: $0 [options]"
     echo "Options:"
-    echo "  -startdaytime <time>        Start time for daytime period (mandatory)"
-    echo "  -enddaytime <time>          End time for daytime period (mandatory)"
-    echo "  -startnighttime <time>      Start time for nighttime period (mandatory)"
-    echo "  -endnighttime <time>        End time for nighttime period (mandatory)"
-    echo "  -serviceday <service>       Service to run during daytime (mandatory)"
-    echo "  -servicenight <service>     Service to run during nighttime (mandatory)"
+    echo "  -startdaytime <time>        Start time for daytime period (mandatory e.g. 07:30)"
+    echo "  -enddaytime <time>          End time for daytime period (mandatorye.g. 22:30)"
+    echo "  -startnighttime <time>      Start time for nighttime period (mandatorye.g. 22:31)"
+    echo "  -endnighttime <time>        End time for nighttime period (mandatory e.g. 07:29)"
+    echo "  -serviceday <service>       Service to run during daytime (mandatory e.g. dumphfdl5)"
+    echo "  -servicenight <service>     Service to run during nighttime (mandatory e.g. dumphfdl6)"
     echo "  -bandday <description>      Description of band during daytime (optional, for example \"Band 17\")"
     echo "  -bandnight <description>    Description of band during nighttime (optional, for example \"Band 5-6\")"
     echo "  -h, --help                  Display this help message"
@@ -71,7 +71,7 @@ if [[ "$current_time" > "$start_time_day" && "$current_time" < "$end_time_day" ]
     fi
 
 # Check if current time is within the second time range
-elif [[ "$current_time" > "$start_time_night" || "$current_time" < "$end_time_night" ]]; then
+elif [[ "$current_time" > "$start_time_night" && "$current_time" < "$end_time_night" ]]; then
     log_message "Current time is between $start_time_night and $end_time_night (nighttime)"
 
     # Check if service_day is running
