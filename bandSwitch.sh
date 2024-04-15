@@ -71,7 +71,7 @@ if [[ "$current_time" > "$start_time_day" && "$current_time" < "$end_time_day" ]
     fi
 
 # Check if current time is within the second time range
-elif [[ "$current_time" > "$start_time_night" && "$current_time" < "$end_time_night" ]]; then
+elif [[ "$current_time" > "$start_time_night" || "$current_time" < "$end_time_night" ]]; then
     log_message "Current time is between $start_time_night and $end_time_night (nighttime)"
 
     # Check if service_day is running
